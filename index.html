@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>THR Dari Iwan</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            background-image: radial-gradient(circle, #f0f9e8 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .amplop {
+            position: relative;
+            width: 350px;
+            height: 250px;
+            background-color: #2e7d32; /* Hijau tua untuk amplop */
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: all 0.5s ease;
+            z-index: 1;
+        }
+        
+        .amplop:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-left: 175px solid transparent;
+            border-right: 175px solid transparent;
+            border-top: 120px solid #388e3c; /* Hijau lebih muda untuk tutup amplop */
+            transform-origin: top;
+            transition: all 0.5s ease;
+            z-index: 3;
+        }
+        
+        .amplop:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 175px solid transparent;
+            border-right: 175px solid transparent;
+            border-bottom: 130px solid #1b5e20; /* Hijau lebih gelap untuk bagian bawah */
+            z-index: 1;
+        }
+        
+        .amplop:hover:not(.buka) {
+            transform: translateY(-10px);
+        }
+        
+        .amplop.buka {
+            height: auto;
+            min-height: 250px;
+            transition: all 0.5s ease;
+        }
+        
+        .amplop.buka:before {
+            transform: rotateX(180deg);
+            z-index: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .surat {
+            position: relative;
+            width: 320px;
+            min-height: 180px;
+            background-color: #fff9e6;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            transition: all 0.5s ease 0.3s;
+            z-index: 2;
+            transform-origin: top;
+            transform: scaleY(0);
+            overflow: hidden;
+            opacity: 0;
+        }
+        
+        .amplop.buka .surat {
+            transform: scaleY(1);
+            opacity: 1;
+            height: auto;
+        }
+        
+        .kertas {
+            background-color: white;
+            min-height: 100%;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2e7d32; /* Warna hijau */
+            width: 100%;
+        }
+        
+        .tanggal {
+            text-align: right;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+            width: 100%;
+        }
+        
+        .isi {
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 20px;
+            color: #333;
+            width: 100%;
+        }
+        
+        .scan-me {
+            text-align: center;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #2e7d32;
+            width: 100%;
+        }
+        
+        .tanda-tangan {
+            margin-top: 20px;
+            text-align: right;
+            font-style: italic;
+            color: #2e7d32; /* Warna hijau */
+            width: 100%;
+        }
+        
+        .gambar-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .gambar {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .gambar img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid #2e7d32; /* Border hijau */
+        }
+        
+        /* Tambahan elemen ketupat kecil di sudut */
+        .ketupat-decoration {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: #ffeb3b; /* Kuning untuk ketupat */
+            transform: rotate(45deg);
+            opacity: 0.3;
+            z-index: 2;
+        }
+        
+        .ketupat-1 {
+            top: 10px;
+            left: 10px;
+        }
+        
+        .ketupat-2 {
+            bottom: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="amplop" onclick="this.classList.toggle('buka')">
+        <div class="ketupat-decoration ketupat-1"></div>
+        <div class="ketupat-decoration ketupat-2"></div>
+        <div class="surat">
+            <div class="kertas">
+                <div class="header">
+                    <h3>Selamat Hari Raya Idul Fitri</h3>
+                </div>
+                <div class="tanggal">
+                    Senin, 31 Maret 2025
+                </div>
+                <div class="isi">
+                    <p>Kepada Yth. Teman Teman Iwan,</p>
+                    <p>Selamat hari raya idul fitri, taqabbalallahu minna wa minkum minal aidin wal faizin, mohon maaf lahir dan batin semuanyaa.</p>
+                </div>
+                
+                <div class="scan-me">
+                    Scan me for duit raya 🤗
+                </div>
+                
+                <div class="gambar-container">
+                    <div class="gambar">
+                        <img src="codeqr.jpg" alt="QR Code">
+                    </div>
+                </div>
+                
+                <div class="tanda-tangan">
+                    <p>Hormat saya,</p>
+                    <p>Nur Ridwan</p>
+                    <p>Pengirim</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.amplop').addEventListener('click', function() {
+            const amplop = this;
+            const surat = amplop.querySelector('.surat');
+            
+            if (amplop.classList.contains('buka')) {
+                // Hitung tinggi surat dan set tinggi amplop
+                const suratHeight = surat.offsetHeight + 40; // +40 untuk padding
+                amplop.style.height = suratHeight + 'px';
+            } else {
+                // Kembalikan ke ukuran awal saat ditutup
+                amplop.style.height = '250px';
+            }
+        });
+    </script>
+</body>
+</html>
